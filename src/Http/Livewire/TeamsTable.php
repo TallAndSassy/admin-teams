@@ -42,16 +42,16 @@ class TeamsTable extends \StWip\Themed\ThemedTable
             Column::make('Name')
                 ->searchable()
                 ->sortable()
-//                ->html()
-//                ->render(function($row) {
-//                    $asrRow = static::getAsrReadables($row);
-//                    $maybeHighlightedValue = $value = $asrRow['name'];
-//                    $id = $row['id'];
-//
-//
-//                    return view('tassy::users-page-table-cell-name', ['value'=>$value, 'maybeHighlightedValue'=>$maybeHighlightedValue,  'id'=>$id, 'asrRow'=>$asrRow])->render();
-//                    #return "<b>{$row['name']}</b>";
-//                }),
+                ->html()
+                ->render(function($row) {
+                    $asrRow = static::getAsrReadables($row);
+                    $maybeHighlightedValue = $value = $asrRow['name'];
+                    $id = $row['id'];
+
+
+                    return view('tassy::teams-page-table-cell-name', ['value'=>$value, 'maybeHighlightedValue'=>$maybeHighlightedValue,  'id'=>$id, 'asrRow'=>$asrRow])->render();
+                    #return "<b>{$row['name']}</b>";
+                }),
 //            Column::make('E-mail', 'email')
 //                ->searchable()
 //                ->sortable()

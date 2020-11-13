@@ -62,7 +62,7 @@ class AdminTeamsServiceProvider extends ServiceProvider
         // TODO: Register your livewire components that live in this package here:
         \Livewire\Livewire::component('tassy::teams-table',  \TallModSassy\AdminTeams\Http\Livewire\TeamsTable::class);
         #\Livewire\Livewire::component('tassy::logins-table',  \TallModSassy\AdminTeams\Http\Livewire\LoginsTable::class);
-        #\Livewire\Livewire::component('tassy::user-value-with-shallow-modal',  \TallModSassy\AdminTeams\Http\Livewire\UserValueWithShallowModal::class);
+        \Livewire\Livewire::component('tassy::team-true',  \TallModSassy\AdminTeams\Http\Livewire\TeamTrue::class);
         // TODO: Add your own other boot related stuff here...
 
 
@@ -73,7 +73,8 @@ class AdminTeamsServiceProvider extends ServiceProvider
             'heroicon-o-user-group',
             null
         )
-        ->pushLink('admin.people.teams', _('Teams'),'/admin/people/teams');
+        ->pushLink('admin.people.teams', __('Teams'),'/admin/people/teams');
+
 
     }
 
