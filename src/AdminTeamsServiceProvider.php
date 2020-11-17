@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
-require_once(__DIR__."/../routes/web.php"); // MaybeToDo
+#require_once(__DIR__."/../routes/web.php");  NOPE: See the readme
 
 class AdminTeamsServiceProvider extends ServiceProvider
 {
@@ -63,6 +63,8 @@ class AdminTeamsServiceProvider extends ServiceProvider
         \Livewire\Livewire::component('tassy::teams-table',  \TallModSassy\AdminTeams\Http\Livewire\TeamsTable::class);
         #\Livewire\Livewire::component('tassy::logins-table',  \TallModSassy\AdminTeams\Http\Livewire\LoginsTable::class);
         \Livewire\Livewire::component('tassy::team-true',  \TallModSassy\AdminTeams\Http\Livewire\TeamTrue::class);
+
+        \Livewire\Livewire::component('tassy::cards.num-teams',  \TallModSassy\AdminTeams\Http\Livewire\Cards\NumTeams::class);
         // TODO: Add your own other boot related stuff here...
 
 
