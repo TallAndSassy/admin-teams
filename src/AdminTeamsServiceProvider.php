@@ -61,10 +61,11 @@ class AdminTeamsServiceProvider extends ServiceProvider
 
         // TODO: Register your livewire components that live in this package here:
         \Livewire\Livewire::component('tassy::teams-table',  \TallModSassy\AdminTeams\Http\Livewire\TeamsTable::class);
-        #\Livewire\Livewire::component('tassy::logins-table',  \TallModSassy\AdminTeams\Http\Livewire\LoginsTable::class);
-        \Livewire\Livewire::component('tassy::team-true',  \TallModSassy\AdminTeams\Http\Livewire\TeamTrue::class);
-
+        #\Livewire\Livewire::component('tassy::team-true',  \TallModSassy\AdminTeams\Http\Livewire\TeamTrue::class);
+        \Livewire\Livewire::component('tassy::team-modal-read-update',  \TallModSassy\AdminTeams\Http\Livewire\TeamModalReadUpdate::class);
+        \Livewire\Livewire::component('tassy::team-modal-summary',  \TallModSassy\AdminTeams\Http\Livewire\TeamModalSummary::class);
         \Livewire\Livewire::component('tassy::cards.num-teams',  \TallModSassy\AdminTeams\Http\Livewire\Cards\NumTeams::class);
+        \Livewire\Livewire::component('tassy::team-tabs',  \TallModSassy\AdminTeams\Http\Livewire\TeamTabs::class);
         // TODO: Add your own other boot related stuff here...
 
 

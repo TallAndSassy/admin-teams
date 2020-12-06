@@ -4,7 +4,9 @@ namespace TallModSassy\AdminTeams\Http\Livewire;
 
 use Livewire\Component;
 
-class TeamTrue extends \TallModSassy\AdminBaseTruthiness\Http\Livewire\InnerTrue
+class TeamTrue
+    extends \TallModSassy\AdminBaseTruthiness\Http\Livewire\InnerTrue
+
 {
     public \App\Models\Team $someModel;
     public string $someModelName = \App\Models\Team::class;
@@ -22,6 +24,11 @@ class TeamTrue extends \TallModSassy\AdminBaseTruthiness\Http\Livewire\InnerTrue
         parent::mount($id);
         $this->knownGoodName = $this->someModel->name;
         $this->itemLabel = __('Team');
+        $this->redoTitle();
+    }
+
+    private function redoTitle() {
+         $this->title = "{$this->itemLabel}: {$this->knownGoodName}";
     }
 
     public function update(): bool
@@ -42,9 +49,9 @@ class TeamTrue extends \TallModSassy\AdminBaseTruthiness\Http\Livewire\InnerTrue
             $this->isInState = 'reading';
             flash('Successfully updated to '.$somethingToSave->name)->success()->livewire($this);
             $this->knownGoodName = $somethingToSave->name;
+            $this->redoTitle();
             return true;
         }
-
     }
 
 

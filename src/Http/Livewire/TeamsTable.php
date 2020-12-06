@@ -8,7 +8,7 @@ use ElegantTechnologies\LaravelLivewireTables\Views\Column;
 
 
 
-class TeamsTable extends \StWip\Themed\ThemedTable
+class TeamsTable extends \TallAndSassy\AppThemBaseTables\ThemedTable
 {
     public function query() : Builder
     {
@@ -52,20 +52,14 @@ class TeamsTable extends \StWip\Themed\ThemedTable
                     return view('tassy::teams-page-table-cell-name', ['value'=>$value, 'maybeHighlightedValue'=>$maybeHighlightedValue,  'id'=>$id, 'asrRow'=>$asrRow])->render();
                     #return "<b>{$row['name']}</b>";
                 }),
-//            Column::make('E-mail', 'email')
-//                ->searchable()
-//                ->sortable()
-//                ->html()
-//                ->render(function($row) {
-//                    $email = $row['email'];
-//                    return view('tassy::components.ui.link_mailto',['slotWithHighlighting'=>$email,'slot'=>$email]);
-//                }),
-//             Column::make(__('Teams'), 'teams')
-//                ->html()
-//                ->render(function($row) {
-//                    $objUser = User::find($row['id']);
-//                    return view('tassy::users-page-table-cell-teams',['objUser'=>$objUser]);
-//                }),
+
+             Column::make('Actions')
+                ->html()
+                ->render(function($row) {
+                    $asrRow = static::getAsrReadables($row);
+                    $id = $row['id'];
+                    return view('tassy::teams-page-table-cell-actions', [ 'id'=>$id, 'asrRow'=>$asrRow])->render();
+                }),
 
         ];
     }

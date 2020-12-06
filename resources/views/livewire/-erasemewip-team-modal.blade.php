@@ -1,18 +1,5 @@
-<div>
-
-<div wire:click="showModal()" wire:loading.attr="disabled" class="flex">
-        <x-tassy::ui.looks.link-to-modal href="tbd">
-            {!! $knownGoodName !!}
-        </x-tassy::ui.looks.link-to-modal>
-    </div>
-
-
-    <!-- Modal -->
-    <x-tassy::dialog-modal wire:model="showingModal">
-
-        <x-slot name="title">{!!  $title !!}</x-slot>
-        <x-slot name="content">
-            <livewire:flash-container key="{{uniqid()}}"/>
+<div >
+    <livewire:flash-container key="{{uniqid()}}"/>
 
             @if ($isInState == 'reading')
                 <div class="">
@@ -50,29 +37,44 @@
 
             @else
                 {{assert(0,__FILE__.__LINE__)}}
-            @endif
-
-        </x-slot>
-        <x-slot name="footer">
-             @if ($isInState == 'reading')
-            <x-jet-secondary-button wire:click="closeModal()" wire:loading.attr="disabled">
-                Close
-            </x-jet-secondary-button>
-             @elseif ($isInState == 'editing')
-                 <x-jet-secondary-button wire:click="closeModal()" wire:loading.attr="disabled">
+    @endif
+    <div class="buttonRow  px-4 py-3 sm:px-0 sm:flex  sm:flex-row-reverse">
+        @if ($isInState == 'reading')
+            @component('components.buttons.standard_bottom',['type'=>'Primary'])
+                @slot('text')
+                    Close
+                @endslot
+                @slot('click')
+                    close()
+                @endslot
+            @endcomponent
+        @elseif ($isInState == 'editing')
+            <div class="ml-2">
+            @component('components.buttons.standard_bottom',['type'=>'Primary'])
+                @slot('text')
+                    {{-- I'd put this wire stuff into slots... not important enough yet--}}
+                     <div wire:click="update()" wire:loading.attr="disabled"
+                                class="{{ $canUpdate ?'' : 'text-blue-200'}}">
+                        Update
+                    </div>
+                @endslot
+                @slot('click')
+                @endslot
+            @endcomponent
+        </div>
+            <div class="">
+             @component('components.buttons.standard_bottom',['type'=>'Secondary'])
+                @slot('text')
                     Cancel
-                 </x-jet-secondary-button>
+                @endslot
+{{--                It would be better to have this go back to first page rather than close--}}
+{{--                 If would be nice, maybe to make Close and Cancel shortcut buttons. Seems super common.--}}
 
-                 <x-jet-secondary-button wire:click="update()" wire:loading.attr="disabled" class="{{ $canUpdate ?'' : 'text-blue-200'}}">
-                    Update
-                 </x-jet-secondary-button>
-            @else
-                {{assert(0,__FILE__.__LINE__)}}
-            @endif
+            @endcomponent
+            </div>
+        @else
+            {{assert(0,__FILE__.__LINE__)}}
+        @endif
+    </div>
 
-
-
-        </x-slot>
-
-    </x-tassy::dialog-modal>
 </div>
